@@ -42,15 +42,15 @@ public class WhatsappRepository {
 
     public String changeAdmin(User approver, User user, Group group) throws Exception{
         if(!groupUserMap.containsKey(group)){
-            throw new Exception("Group not exist");
+            throw new Exception("Group does not exist");
         }
 
         if(!adminMap.get(group).equals(approver)){
-            throw new Exception("User cannot be accepted");
+            throw new Exception("Approver does not have rights");
         }
 
         if(!this.userExistsInGroup(group, user)){
-            throw new Exception("User no present");
+            throw new Exception("User is not a participan");
         }
 
         adminMap.put(group, user);
@@ -100,7 +100,7 @@ public class WhatsappRepository {
 
     public int sendMessage(Message massage, User sender, Group group) throws Exception{
         if(!groupUserMap.containsKey(group)){
-            throw new Exception("Group not exist");
+            throw new Exception("Group does not exist");
         }
 
         if(!this.userExistsInGroup(group, sender)){
