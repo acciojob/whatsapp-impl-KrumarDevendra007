@@ -50,7 +50,7 @@ public class WhatsappRepository {
         }
 
         if(!this.userExistsInGroup(group, user)){
-            throw new Exception("User is not a participan");
+            throw new Exception("User is not a participant");
         }
 
         adminMap.put(group, user);
@@ -69,16 +69,16 @@ public class WhatsappRepository {
         return false;
     }
 
-    public Group createGroup(List<User> userList){
-        if(userList.size() == 2){
-            return this.createPersonalChat(userList);
+    public Group createGroup(List<User> users){
+        if(users.size() == 2) {
+            return this.createPersonalChat(users);
         }
 
         this.customGroupCount++;
-        String GroupName = "Group" + this.customGroupCount;
-        Group group = new Group(GroupName, userList.size());
-        groupUserMap.put(group, userList);
-        adminMap.put(group, userList.get(0));
+        String groupName = "Group " + this.customGroupCount;
+        Group group = new Group(groupName, users.size());
+        groupUserMap.put(group, users);
+        adminMap.put(group, users.get(0));
 
         return group;
     }
