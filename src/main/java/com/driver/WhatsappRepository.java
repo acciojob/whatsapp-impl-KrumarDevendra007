@@ -107,7 +107,7 @@ public class WhatsappRepository {
             throw new Exception("You are not allowed to send message");
         }
             List<Message> messages = new ArrayList<>();
-            if(!groupMessageMap.containsKey(group)){
+            if(groupMessageMap.containsKey(group)){
                 messages = groupMessageMap.get(group);
             }
 
